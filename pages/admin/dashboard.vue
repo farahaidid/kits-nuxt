@@ -5,18 +5,24 @@
       <h1 class="title">
         Dashboard
       </h1>
+      <h4>User ID: {{uid}}</h4>
+      <h4>Name: {{displayName}}</h4>
+      <h4>Email: {{userEmail}}</h4>
     </div>
   </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
-
+import { mapGetters } from "vuex"
 export default {
-    layout: 'dark',
+  layout: 'dark',
   components: {
     Logo
-  }
+  },
+  computed:{
+    ...mapGetters("user",["uid","displayName",'userEmail']),
+  },
 }
 </script>
 

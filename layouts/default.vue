@@ -10,6 +10,7 @@
           <b-navbar-nav>
             <b-nav-item href="#">About</b-nav-item>
             <b-nav-item href="#">Resources <b-badge pill variant="success">New!</b-badge></b-nav-item>
+            <b-nav-item href="/admin/dashboard">Dashboard</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
@@ -29,7 +30,7 @@
             <b-nav-item-dropdown right>
               <!-- Using 'button-content' slot -->
               <template v-slot:button-content>
-                <em>User</em>
+                <em>{{uid}}</em>
               </template>
               <b-dropdown-item href="#">Profile</b-dropdown-item>
               <b-dropdown-item href="#">Sign Out</b-dropdown-item>
@@ -41,6 +42,15 @@
     <nuxt />
   </div>
 </template>
+
+<script>
+import { mapGetters } from "vuex"
+export default {
+  computed:{
+    ...mapGetters("user",["uid","displayName",'userEmail']),
+  },
+}
+</script>
 
 <style>
 html {

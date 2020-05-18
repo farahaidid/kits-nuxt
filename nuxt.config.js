@@ -34,6 +34,7 @@ export default {
   */
   plugins: [
     '~/plugins/firebase.js',
+    { src: '~/plugins/localStorage.js', ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules
