@@ -30,7 +30,7 @@
             <b-nav-item-dropdown right>
               <!-- Using 'button-content' slot -->
               <template v-slot:button-content>
-                <em>{{uid}}</em>
+                <em v-if="user">{{user.uid}}</em>
               </template>
               <b-dropdown-item href="#">Profile</b-dropdown-item>
               <b-dropdown-item href="#">Sign Out</b-dropdown-item>
@@ -47,7 +47,7 @@
 import { mapGetters } from "vuex"
 export default {
   computed:{
-    ...mapGetters("user",["uid","displayName",'userEmail']),
+    ...mapGetters("users",["user"]),
   },
 }
 </script>

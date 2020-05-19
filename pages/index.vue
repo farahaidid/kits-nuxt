@@ -31,7 +31,7 @@
 <script>
 import Logo from '~/components/Logo.vue'
 import firebase from 'firebase'
-import { mapMutations } from "vuex"
+import { mapActions } from "vuex"
 
 export default {
   name: 'App',
@@ -49,10 +49,10 @@ export default {
   },
   created() {
     firebase.auth().onAuthStateChanged(user => (this.authenticatedUser = user))
-    this.login()
+    this.loginUser()
   },
   methods: {
-    ...mapMutations("user",["SET_FIREBASE_USER"]),
+    ...mapActions("users",["login"]),
     register() {
       if(this.password === this.registrationPassword) {
         firebase
@@ -62,14 +62,10 @@ export default {
         // display error message
       }
     },
-    login() {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
-        let user = res.user
-        this.SET_FIREBASE_USER({
-          uid: user.uid,
-          displayName: user.displayName,
-          userEmail: user.email,
-        })
+    async loginUser() {
+      await this.login({
+        email: this.email,
+        password: this.password
       })
     },
     loginOrRegister() {

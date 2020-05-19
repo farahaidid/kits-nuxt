@@ -5,9 +5,9 @@
       <h1 class="title">
         Dashboard
       </h1>
-      <h4>User ID: {{uid}}</h4>
-      <h4>Name: {{displayName}}</h4>
-      <h4>Email: {{userEmail}}</h4>
+      <h4>User ID: {{user.uid}}</h4>
+      <h4>Name: {{user.displayName}}</h4>
+      <h4>Email: {{user.email}}</h4>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
     Logo
   },
   computed:{
-    ...mapGetters("user",["uid","displayName",'userEmail']),
+    ...mapGetters("users",["user"]),
   },
 }
 </script>
